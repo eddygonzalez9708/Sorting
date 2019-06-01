@@ -15,11 +15,12 @@ def insertion_sort(arr):
         else:
           break
   
-  print(arr)
+  return arr
 
 print('Insertion Sort My Solution')
-insertion_sort([12, 11, 13, 5, 6])
-insertion_sort([4, 3, 2, 10, 12, 1, 5, 6])
+print(insertion_sort([12, 11, 13, 5, 6]))
+print(insertion_sort([4, 3, 2, 10, 12, 1, 5, 6]))
+print()
 
 ## Geeks for Geeks Solution of Insertion Sort
 
@@ -30,34 +31,46 @@ def insertion_sort_two(arr):
     # Move elements of arr[0..i-1], that are 
     # greater than key, to one position ahead 
     # of their current position
-    j = i-1
+
+    j = i - 1
     
     while j >= 0 and key < arr[j]: 
-      arr[j + 1] = arr[j] 
+      arr[j + 1] = arr[j]
       j -= 1
     
     arr[j + 1] = key 
   
-  print(arr)
+  return arr
 
 print('Insertion Sort Second Geeks for Geeks Solution')
-insertion_sort_two([12, 11, 13, 5, 6])
-insertion_sort_two([4, 3, 2, 10, 12, 1, 5, 6])
+print(insertion_sort_two([12, 11, 13, 5, 6]))
+print(insertion_sort_two([4, 3, 2, 10, 12, 1, 5, 6]))
+print()
 
 ### TO-DO: Complete the selection_sort() function below 
 
-def selection_sort( arr ):
+def selection_sort(arr):
   # loop through n-1 elements
 
   for i in range(0, len(arr) - 1):
     cur_index = i
     smallest_index = cur_index
-    # TO-DO: find next smallest element
-    # (hint, can do in 3 loc) 
+
+    for j in range(i + 1, len(arr)):
+      # TO-DO: find next smallest element
+      # (hint, can do in 3 loc) 
+      if arr[j] < arr[smallest_index]:
+        smallest_index = j
     
     # TO-DO: swap
+    arr[smallest_index], arr[i] = arr[i], arr[smallest_index]
+
   return arr
 
+print('Selection Sort My Solution')
+print(selection_sort([12, 11, 13, 5, 6]))
+print(selection_sort([4, 3, 2, 10, 12, 1, 5, 6]))
+print()
 
 ### TO-DO: Implement the Bubble Sort function below
 
@@ -81,11 +94,12 @@ def bubble_sort(arr):
     else:
       index = 0
   
-  print(arr)
+  return arr
 
 print('Bubble Sort My Solution')
-bubble_sort([12, 11, 13, 5, 6])
-bubble_sort([4, 3, 2, 10, 12, 1, 5, 6])
+print(bubble_sort([12, 11, 13, 5, 6]))
+print(bubble_sort([4, 3, 2, 10, 12, 1, 5, 6]))
+print()
 
 ## Geeks for Geeks Solution of Insertion Sort
 
@@ -95,19 +109,21 @@ def bubble_sort_two(arr):
   # Traverse through all array elements 
   for i in range(n): 
     # Last i elements are already in place 
-    for j in range(0, n-i-1): 
+    for j in range(0, n - i - 1): 
     # traverse the array from 0 to n-i-1
       # Swap if the element found is greater
       # than the next element 
-      if arr[j] > arr[j+1] : 
-        arr[j], arr[j+1] = arr[j+1], arr[j] 
+      if arr[j] > arr[j + 1]:
+        arr[j], arr[j + 1] = arr[j + 1], arr[j] 
   
-  print(arr)
+  return arr
 
 print('Bubble Sort Second Geeks for Geeks Solution')
-bubble_sort_two([12, 11, 13, 5, 6])
-bubble_sort_two([4, 3, 2, 10, 12, 1, 5, 6])
+print(bubble_sort_two([12, 11, 13, 5, 6]))
+print(bubble_sort_two([4, 3, 2, 10, 12, 1, 5, 6]))
+print()
 
 # STRETCH: implement the Count Sort function below
-def count_sort( arr, maximum=-1 ):
+
+def count_sort(arr, maximum = -1):
   return arr

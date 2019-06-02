@@ -40,12 +40,34 @@ def merge_sort(arr):
 
   split = len(arr) // 2
 
-  arr1 = arr[:split]
-  arr2 = arr[split:]  
+  left = merge_sort(arr[:split])
+  right = merge_sort(arr[split:])
 
-  # TO-DO: Complete the helper function below to merge 2 sorted arrays
+  return merge(left, right) 
+
+# TO-DO: Complete the helper function below to merge 2 sorted arrays
   
-  return quick_sort(quick_sort(merge_sort(arr1)) + quick_sort(merge_sort(arr2)))
+def merge(arr1, arr2):
+  length = len(arr1) + len(arr2)
+  merged_arr = [0] * length
+
+  one = two = 0
+
+  for x in range(length):
+    if one >= len(arr1):
+      merged_arr[x] = arr2[two]
+      two += 1
+    elif two >= len(arr2):
+      merged_arr[x] = arr1[one]
+      one += 1
+    elif arr1[one] > arr2[two]:
+      merged_arr[x] = arr2[two]
+      two += 1
+    else:
+      merged_arr[x] = arr1[one]
+      one += 1
+  
+  return merged_arr
 
 print('Merge Sort My Solution')
 print(merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))

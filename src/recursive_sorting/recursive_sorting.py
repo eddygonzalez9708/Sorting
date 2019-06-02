@@ -32,21 +32,28 @@ print(quick_sort([0, 1, 2, 3, 4, 5]))
 print(quick_sort(random.sample(range(200), 10)))
 print()
 
-# TO-DO: complete the helpe function below to merge 2 sorted arrays
-def merge( arrA, arrB ):
-    elements = len( arrA ) + len( arrB )
-    merged_arr = [0] * elements
-    # TO-DO
-    
-    return merged_arr
+# TO-DO: Implement the Merge Sort function below USING RECURSION
 
-
-# TO-DO: implement the Merge Sort function below USING RECURSION
-def merge_sort( arr ):
-    # TO-DO
-
+def merge_sort(arr):
+  if len(arr) < 2:
     return arr
 
+  split = len(arr) // 2
+
+  arr1 = arr[:split]
+  arr2 = arr[split:]  
+
+  # TO-DO: Complete the helper function below to merge 2 sorted arrays
+  
+  return quick_sort(quick_sort(merge_sort(arr1)) + quick_sort(merge_sort(arr2)))
+
+print('Merge Sort My Solution')
+print(merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
+print(merge_sort([]))
+print(merge_sort([2]))
+print(merge_sort([0, 1, 2, 3, 4, 5]))
+print(merge_sort(random.sample(range(200), 10)))
+print()
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):

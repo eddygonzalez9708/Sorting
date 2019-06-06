@@ -125,5 +125,53 @@ print()
 
 # STRETCH: implement the Count Sort function below
 
-def count_sort(arr, maximum = -1):
-  return arr
+def count_sort(arr):
+  if len(arr) < 2:
+    return arr
+
+  # First Step - Find the min and max.
+
+  minimum = min(arr)
+  maximum = max(arr)
+
+  if minimum < 0:
+    return "Error, negative numbers not allowed in Count Sort"
+
+  # Second Step - Create index from min to max
+
+  # Third Step - Count the number of times each number appeared in the input 
+
+  count = {num:0 for num in range(minimum, maximum + 1)}
+
+  for item in arr:
+    count[item] += 1
+  
+  # print(f'count 1 {count}')
+
+  # Fourth Step - Create sumCount that will hold the sum of counts for the given index and the index to its left.
+
+  for key in count:
+    if key - 1 in count:
+      count[key] += count[key - 1]
+  
+  # print(f'count 2 {count}')
+
+  # Fifth Step - There are len(arr) numbers in the input so we will create len(arr) positions and fill those positions with the given numbers as per sumCount. After, reduce the val of the index in sumCount by 1 each time the number repeats in the input. 
+
+  sorted_arr = [0 for x in range(len(arr))]
+  
+  # print(f'sorted arr 1 {sorted_arr}')
+
+  for num in arr:
+    val = count[num] - 1
+    sorted_arr[val] = num
+    count[num] -= 1
+  
+  # print(f'sorted arr 2 {sorted_arr}')
+
+  return sorted_arr
+
+print('Count Sort My Solution')
+print(count_sort([12, 11, 13, 5, 6]))
+print(count_sort([4, 3, 2, 10, 12, 1, 5, 6]))
+print()
